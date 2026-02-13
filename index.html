@@ -96,6 +96,12 @@
             box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
             border-color: rgba(99, 102, 241, 0.4);
         }
+        
+        #main-output {
+            max-height: 80vh;
+            width: auto;
+            margin: 0 auto;
+        }
     </style>
 </head>
 <body class="intro-active">
@@ -117,8 +123,8 @@
             </div>
             
             <div class="mt-4 space-y-2 fade-in" style="animation-delay: 0.3s">
-                <p class="text-lg md:text-xl text-slate-400 font-light tracking-wide uppercase tracking-[0.3em]">Neural Engine v1.0</p>
-                <p class="text-sm text-slate-600 max-w-sm mx-auto font-medium">Elevating visual storytelling through Creao 1 architecture.</p>
+                <p class="text-lg md:text-xl text-slate-400 font-light tracking-wide uppercase tracking-[0.3em]">Creao 1 Neural Engine</p>
+                <p class="text-sm text-slate-600 max-w-sm mx-auto font-medium">Elevating visual storytelling through Neural architecture.</p>
             </div>
 
             <button onclick="startApp()" class="mt-12 pointer-events-auto group relative px-12 py-5 bg-white text-black rounded-full font-bold transition-all hover:scale-105 active:scale-95 flex items-center gap-3">
@@ -150,7 +156,7 @@
                 <div class="flex items-center gap-3">
                     <div class="hidden md:block text-right">
                         <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Status</p>
-                        <p class="text-[11px] text-emerald-400 font-bold">Neural Sync Active</p>
+                        <p class="text-[11px] text-emerald-400 font-bold">Creao 1 Sync Active</p>
                     </div>
                     <div class="w-10 h-10 rounded-full bg-slate-800 border border-white/10 flex items-center justify-center">
                         <i data-lucide="user" class="w-4 h-4 text-slate-400"></i>
@@ -181,7 +187,7 @@
                 </div>
 
                 <div id="media-queue-container" class="hidden glass rounded-[32px] p-6">
-                    <h4 class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-4">Neural Buffer</h4>
+                    <h4 class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-4">Creao Buffer</h4>
                     <div id="media-queue" class="grid grid-cols-4 gap-3"></div>
                 </div>
             </aside>
@@ -197,13 +203,13 @@
                                 <i data-lucide="cpu" class="w-10 h-10 text-slate-500"></i>
                             </div>
                         </div>
-                        <h3 class="text-2xl font-bold text-slate-300">Standby for Initialization</h3>
-                        <p class="text-slate-500 mt-2 max-w-sm text-center text-sm font-medium">Input your parameters to trigger the Creao 1 visualization sequence.</p>
+                        <h3 class="text-2xl font-bold text-slate-300">Standby for Creao 1</h3>
+                        <p class="text-slate-500 mt-2 max-w-sm text-center text-sm font-medium">Input parameters to start the sequence.</p>
                     </div>
 
                     <div id="result-display" class="hidden fade-in space-y-8 h-full">
-                        <div class="relative group rounded-[48px] overflow-hidden border border-white/10 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.8)] bg-black">
-                            <img id="main-output" src="" class="w-full h-auto object-contain" alt="Output">
+                        <div class="relative group rounded-[48px] overflow-hidden border border-white/10 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.8)] bg-black flex justify-center items-center min-h-[400px]">
+                            <img id="main-output" src="" class="block max-w-full h-auto" alt="Output">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                             <div class="absolute bottom-8 left-8 right-8 flex justify-between items-center translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
                                 <div class="glass px-6 py-3 rounded-2xl flex items-center gap-3">
@@ -228,7 +234,7 @@
                     <div class="glass rounded-[48px] p-10 h-full flex flex-col fade-in">
                         <div id="edit-empty" class="flex-1 flex flex-col items-center justify-center text-center">
                             <i data-lucide="layers" class="w-12 h-12 text-slate-700 mb-4"></i>
-                            <p class="text-slate-500 font-medium">No neural assets in current workspace.</p>
+                            <p class="text-slate-500 font-medium">No assets in workspace.</p>
                             <button onclick="document.getElementById('file-upload').click()" class="mt-6 px-10 py-4 glass hover:bg-white/5 rounded-2xl text-sm font-bold transition-all">Import Assets</button>
                         </div>
                         
@@ -240,9 +246,9 @@
                                 <div class="lg:col-span-5 flex flex-col justify-center space-y-8">
                                     <div>
                                         <h4 class="text-[11px] font-bold text-slate-500 uppercase tracking-widest mb-4">Neural Refinement</h4>
-                                        <textarea id="edit-instruction" class="w-full h-40 bg-black/40 border border-white/10 rounded-2xl p-5 text-sm outline-none transition-all resize-none input-glow font-medium" placeholder="E.g. 'Add a cinematic fog and change lighting to twilight'"></textarea>
+                                        <textarea id="edit-instruction" class="w-full h-40 bg-black/40 border border-white/10 rounded-2xl p-5 text-sm outline-none transition-all resize-none input-glow font-medium" placeholder="Describe specific edits..."></textarea>
                                     </div>
-                                    <button onclick="handleEdit('generic')" class="w-full py-5 bg-white text-black font-extrabold rounded-2xl hover:bg-indigo-50 transition-all shadow-xl active:scale-95">
+                                    <button onclick="handleEdit()" class="w-full py-5 bg-white text-black font-extrabold rounded-2xl hover:bg-indigo-50 transition-all shadow-xl active:scale-95">
                                         Execute Refinement
                                     </button>
                                 </div>
@@ -250,8 +256,7 @@
                              
                              <div class="pt-8 border-t border-white/5">
                                 <div class="flex items-center justify-between mb-6">
-                                    <h4 class="text-[11px] font-bold text-slate-500 uppercase tracking-widest">Neural Library</h4>
-                                    <button onclick="document.getElementById('file-upload').click()" class="text-indigo-400 font-bold text-xs hover:underline">Add Neural Source</button>
+                                    <h4 class="text-[11px] font-bold text-slate-500 uppercase tracking-widest">Library</h4>
                                 </div>
                                 <div id="media-library" class="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4"></div>
                              </div>
@@ -281,7 +286,7 @@
         </div>
         <div class="text-center space-y-2">
             <p class="text-indigo-300 font-bold text-xs uppercase tracking-[0.4em]">Creao 1 Processing</p>
-            <p class="text-slate-600 text-[10px] font-mono">NEURAL_SYNTHESIS_IN_PROGRESS...</p>
+            <p class="text-slate-600 text-[10px] font-mono" id="loading-subtext">NEURAL_SYNTHESIS_IN_PROGRESS...</p>
         </div>
     </div>
 
@@ -293,16 +298,13 @@
 
         lucide.createIcons();
 
-        // Aesthetic Cursor Interaction
         document.addEventListener('mousemove', (e) => {
             const cursor = document.getElementById('cursor');
             const revealText = document.getElementById('reveal-text');
             const x = (e.clientX / window.innerWidth) * 100;
             const y = (e.clientY / window.innerHeight) * 100;
-            
             cursor.style.left = e.clientX + 'px';
             cursor.style.top = e.clientY + 'px';
-            
             if (revealText) {
                 revealText.style.backgroundImage = `radial-gradient(circle 200px at ${x}% ${y}%, #fff 0%, rgba(255,255,255,0.1) 70%, transparent 100%), linear-gradient(to right, #818cf8, #6366f1)`;
             }
@@ -333,7 +335,6 @@
             if (tab === 'history') renderHistory();
             if (tab === 'edit') updateEditView();
             
-            // Layout Adjustments
             const sidePanel = document.getElementById('side-panel');
             const contentPanel = document.getElementById('content-panel');
             if (tab === 'generate') {
@@ -349,7 +350,10 @@
             for (let i = 0; i < retries; i++) {
                 try {
                     const response = await fetch(url, options);
-                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                    if (!response.ok) {
+                        const errorMsg = await response.text();
+                        throw new Error(`HTTP ${response.status}: ${errorMsg}`);
+                    }
                     return await response.json();
                 } catch (err) {
                     if (i === retries - 1) throw err;
@@ -362,17 +366,20 @@
         async function handleGenerate() {
             const prompt = document.getElementById('prompt-input').value;
             if (!prompt.trim()) return;
-            showLoading(true);
+            showLoading(true, "Igniting Neural Core...");
             try {
                 const imageUrl = await generateImage(prompt);
-                const result = { id: Date.now(), prompt, imageUrl, timestamp: new Date().toLocaleTimeString() };
-                currentImage = result;
-                history.unshift(result);
-                sessionAssets.unshift(result);
-                displayResult(result);
-                updateMediaQueue();
+                if (imageUrl) {
+                    const result = { id: Date.now(), prompt, imageUrl, timestamp: new Date().toLocaleTimeString() };
+                    currentImage = result;
+                    history.unshift(result);
+                    sessionAssets.unshift(result);
+                    displayResult(result);
+                    updateMediaQueue();
+                }
             } catch (e) {
-                console.error(e);
+                console.error("Creao 1 Generation failed:", e);
+                alert("Generation error. Check console for details.");
             } finally {
                 showLoading(false);
             }
@@ -385,42 +392,64 @@
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ instances: { prompt: promptText }, parameters: { sampleCount: 1 } })
             });
-            return `data:image/png;base64,${data.predictions[0].bytesBase64Encoded}`;
+            
+            if (data && data.predictions && data.predictions[0] && data.predictions[0].bytesBase64Encoded) {
+                return `data:image/png;base64,${data.predictions[0].bytesBase64Encoded}`;
+            }
+            throw new Error("Invalid image data received from Creao 1 Engine.");
         }
 
-        async function handleEdit(mode) {
+        async function handleEdit() {
             if (!currentImage) return;
             const instruction = document.getElementById('edit-instruction').value;
-            showLoading(true);
+            showLoading(true, "Synthesizing Refinements...");
             try {
                 const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image-preview:generateContent?key=${apiKey}`;
-                const data64 = currentImage.imageUrl.split(',')[1];
+                const base64Data = currentImage.imageUrl.split(',')[1];
+                
                 const data = await fetchWithRetry(url, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        contents: [{ parts: [{ text: instruction || "Refine lighting and details" }, { inlineData: { mimeType: "image/png", data: data64 } }] }],
+                        contents: [{ 
+                            parts: [
+                                { text: instruction || "Enhance the quality and details of this image" }, 
+                                { inlineData: { mimeType: "image/png", data: base64Data } }
+                            ] 
+                        }],
                         generationConfig: { responseModalities: ['TEXT', 'IMAGE'] }
                     })
                 });
+                
                 const out64 = data.candidates?.[0]?.content?.parts?.find(p => p.inlineData)?.inlineData?.data;
-                const result = { id: Date.now(), prompt: instruction, imageUrl: `data:image/png;base64,${out64}`, timestamp: new Date().toLocaleTimeString() };
-                currentImage = result;
-                history.unshift(result);
-                sessionAssets.unshift(result);
-                setTab('generate');
-                displayResult(result);
+                if (out64) {
+                    const result = { id: Date.now(), prompt: instruction, imageUrl: `data:image/png;base64,${out64}`, timestamp: new Date().toLocaleTimeString() };
+                    currentImage = result;
+                    history.unshift(result);
+                    sessionAssets.unshift(result);
+                    setTab('generate');
+                    displayResult(result);
+                }
             } catch (e) {
-                console.error(e);
+                console.error("Refinement failed:", e);
             } finally {
                 showLoading(false);
             }
         }
 
         function displayResult(res) {
-            document.getElementById('placeholder').classList.add('hidden');
-            document.getElementById('result-display').classList.remove('hidden');
-            document.getElementById('main-output').src = res.imageUrl;
+            const placeholder = document.getElementById('placeholder');
+            const resultDisplay = document.getElementById('result-display');
+            const mainImg = document.getElementById('main-output');
+            
+            placeholder.classList.add('hidden');
+            resultDisplay.classList.remove('hidden');
+            
+            // Force browser to treat this as a fresh source
+            mainImg.src = "";
+            setTimeout(() => {
+                mainImg.src = res.imageUrl;
+            }, 10);
         }
 
         function updateEditView() {
@@ -455,7 +484,11 @@
                 sessionAssets.slice(0, 4).forEach(asset => {
                     const div = document.createElement('div');
                     div.className = 'aspect-square rounded-xl overflow-hidden border border-white/10 opacity-40 hover:opacity-100 transition-all cursor-pointer hover:scale-105';
-                    div.onclick = () => { currentImage = asset; setTab('edit'); };
+                    div.onclick = () => { 
+                        currentImage = asset; 
+                        setTab('generate');
+                        displayResult(asset);
+                    };
                     div.innerHTML = `<img src="${asset.imageUrl}" class="w-full h-full object-cover">`;
                     queue.appendChild(div);
                 });
@@ -468,7 +501,11 @@
             history.forEach(item => {
                 const card = document.createElement('div');
                 card.className = 'group relative aspect-square rounded-[32px] overflow-hidden glass border border-white/5 cursor-pointer hover:border-indigo-500/50 transition-all';
-                card.onclick = () => { currentImage = item; setTab('generate'); displayResult(item); };
+                card.onclick = () => { 
+                    currentImage = item; 
+                    setTab('generate'); 
+                    displayResult(item); 
+                };
                 card.innerHTML = `
                     <img src="${item.imageUrl}" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -479,22 +516,47 @@
             });
         }
 
-        function showLoading(show) { document.getElementById('loading-overlay').classList.toggle('hidden', !show); }
-        function downloadCurrent() { if (currentImage) { const a = document.createElement('a'); a.href = currentImage.imageUrl; a.download = 'creao1-export.png'; a.click(); } }
+        function showLoading(show, text = "NEURAL_SYNTHESIS_IN_PROGRESS...") { 
+            const loader = document.getElementById('loading-overlay');
+            const subtext = document.getElementById('loading-subtext');
+            if (show) {
+                subtext.innerText = text;
+                loader.classList.remove('hidden');
+            } else {
+                loader.classList.add('hidden');
+            }
+        }
+
+        function downloadCurrent() { 
+            if (currentImage) { 
+                const a = document.createElement('a'); 
+                a.href = currentImage.imageUrl; 
+                a.download = `creao1-${Date.now()}.png`; 
+                document.body.appendChild(a);
+                a.click(); 
+                document.body.removeChild(a);
+            } 
+        }
 
         document.getElementById('file-upload').addEventListener('change', async (e) => {
             const files = Array.from(e.target.files);
-            showLoading(true);
+            showLoading(true, "Ingesting Local Assets...");
             for (const file of files) {
-                const dataUrl = await new Promise(r => { const reader = new FileReader(); reader.onload = ev => r(ev.target.result); reader.readAsDataURL(file); });
-                const asset = { id: Date.now() + Math.random(), prompt: file.name, imageUrl: dataUrl, timestamp: 'Imported' };
+                const dataUrl = await new Promise(r => { 
+                    const reader = new FileReader(); 
+                    reader.onload = ev => r(ev.target.result); 
+                    reader.readAsDataURL(file); 
+                });
+                const asset = { id: Date.now() + Math.random(), prompt: file.name, imageUrl: dataUrl, timestamp: 'Local Import' };
                 sessionAssets.unshift(asset);
                 if (!currentImage) currentImage = asset;
             }
             updateMediaQueue();
             updateEditView();
             showLoading(false);
-            if (files.length > 0) setTab('edit');
+            if (files.length > 0) {
+                setTab('edit');
+            }
         });
     </script>
 </body>
